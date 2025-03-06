@@ -42,15 +42,12 @@ func main() {
 		os.Exit(1)
 	}
 	contents := strings.Split(fileContent, "\n")
-	var newString string
 	for _, content := range contents {
 		if content == "" {
 			continue
 		}
 		num, _ := strconv.Atoi(content)
 		factors := GetFactors(uint64(num))
-		newString += fmt.Sprintf("%v=%v*%v\n", content, factors[1], factors[0])
+		fmt.Printf("%v=%v*%v\n", content, factors[1], factors[0])
 	}
-	filePointer, _ := os.OpenFile(file, os.O_WRONLY, 0644)
-	filePointer.WriteString(newString)
 }
